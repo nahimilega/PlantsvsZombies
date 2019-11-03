@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController">
+<AnchorPane id="mainPane" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-image: url(&quot;/home/aanchal/eclipse-workspace/PlantsvsZombies/src/application/background.png&quot;);" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController">
    <children>
-      <Button fx:id="startGameButton" layoutX="77.0" layoutY="74.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" />
-      <Button fx:id="exitButton" layoutX="279.0" layoutY="74.0" mnemonicParsing="false" onAction="#quitGame" text="Exit" />
-      <Button fx:id="showInstructionsbutton" layoutX="77.0" layoutY="217.0" mnemonicParsing="false" onAction="#showInstructions" text="Instructions" />
-      <Button fx:id="loadGameButton" layoutX="285.0" layoutY="217.0" mnemonicParsing="false" onAction="#loadGamechosen" text="Load Game" />
+      <ImageView fitHeight="314.0" fitWidth="600.0" layoutX="-1.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/game1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="showInstructionsbutton" layoutX="36.0" layoutY="424.0" mnemonicParsing="false" onAction="#showInstructions" onMouseClicked="#showInstructions" text="Instructions" />
+      <Button fx:id="loadGameButton" layoutX="153.0" layoutY="424.0" mnemonicParsing="false" onAction="#loadGamechosen" onMouseClicked="#loadGamechosen" text="Load Game" />
+      <Button fx:id="exitButton" layoutX="289.0" layoutY="424.0" mnemonicParsing="false" onAction="#quitGame" onMouseClicked="#quitGame" prefHeight="32.0" prefWidth="54.0" text="Exit" />
+      <Button fx:id="startGameButton" layoutX="101.0" layoutY="21.0" mnemonicParsing="false" onAction="#startGame" onMouseClicked="#startGame" prefHeight="32.0" prefWidth="188.0" text="Start Game" />
    </children>
 </AnchorPane>

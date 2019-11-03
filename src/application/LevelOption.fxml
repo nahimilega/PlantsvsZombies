@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="level" prefHeight="500.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="application.MyController4">
+   <children>
+      <Button layoutX="120.0" layoutY="97.0" mnemonicParsing="false" onAction="#level1Start" prefHeight="40.0" prefWidth="150.0" text="LEVEL 1" />
+      <Button layoutX="120.0" layoutY="172.0" mnemonicParsing="false" onAction="#level2Start" prefHeight="40.0" prefWidth="150.0" text="LEVEL 2" />
+      <Button layoutX="120.0" layoutY="405.0" mnemonicParsing="false" onAction="#level3Start" prefHeight="40.0" prefWidth="150.0" text="LEVEL 5" />
+      <Button layoutX="120.0" layoutY="328.0" mnemonicParsing="false" onAction="#level4Start" prefHeight="40.0" prefWidth="150.0" text="LEVEL 4" />
+      <Button layoutX="120.0" layoutY="250.0" mnemonicParsing="false" onAction="#level5Start" prefHeight="40.0" prefWidth="150.0" text="LEVEL 3" />
+   </children>
+</AnchorPane>
