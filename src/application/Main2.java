@@ -56,10 +56,9 @@ public class Main2 extends Application {
 	@Override
 	public void start(Stage theStage) {
 		try {
+			
 			BorderPane root = new BorderPane();
 			root.setId("pane");
-			
-			
 			
 			
 			Scene scene = new Scene(root,1400, 800);
@@ -67,33 +66,16 @@ public class Main2 extends Application {
 			theStage.setScene(scene);
 			
 			
-			
 			Canvas canvas = new Canvas( 1400, 800 );
 	        root.getChildren().add( canvas );
 	        
 	        GraphicsContext gc = canvas.getGraphicsContext2D();
-	        
-	        //Image earth = new Image( "/application/Pea.png" );
-
-	        
-	        /*
-	        AnimatedImage ufo = new AnimatedImage();
-	        Image[] imageArray = new Image[2];
-	        for (int i = 0; i < 2; i++)
-	            imageArray[i] = new Image( "/application/"+ i + ".png",70, 70, false, false );
-	        ufo.frames = imageArray;
-	        ufo.duration = 0.50;
-	        
-	        */
-	        
+	        	        
 	        
 	        Timeline gameLoop = new Timeline();
 	        gameLoop.setCycleCount( Timeline.INDEFINITE );
 	        
 	        final long timeStart = System.currentTimeMillis();
-	        
-	        
-	        
 	        
 	        
 	        rows[0] = new Row(gc, 140, timeStart);
@@ -103,12 +85,6 @@ public class Main2 extends Application {
 	        rows[4] = new Row(gc, 661, timeStart);
 	        
 	        
-	        
-	        
-	        ///This is the menu bar vala part
-	        
-	        
-	        //FileInputStream input = new FileInputStream("resources/images/iconmonstr-home-6-48.png");
 	        Image image1 = new Image("/application/bomb.png",80,90,false,false);
 	        Image image2 = new Image("/application/peaShooter.png",80,90,false,false);
 	        Image image3 = new Image("/application/sunFlower.png",80,90,false,false);
@@ -178,17 +154,7 @@ public class Main2 extends Application {
 	        	  }
 	        	});
 	        
-	        //root.getChildren().add(menuBar);
-	        
-	        //Scene scene2 = new Scene(hbox, 200, 100);
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
+
 	        // create a button 
 	        Button button = new Button("Menu"); 
 	        button.setLayoutX(1350);

@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Label;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -31,15 +32,14 @@ public class MyController implements Initializable {
    private Button showInstructionsbutton;
    @FXML
    private Button startGameButton;
-   
    @FXML
    private Button backButton;
-   
    @FXML
    private Button backtomenuButton;
-   
    @FXML
    private Image background;
+   @FXML
+   private Label sach;
    
    Stage stage;
 	public void setStage(Stage stage){

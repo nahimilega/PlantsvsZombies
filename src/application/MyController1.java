@@ -29,9 +29,8 @@ public class MyController1 implements Initializable {
 	
 	@Override
 	   public void initialize(URL location, ResourceBundle resources) {
-	 
-	       // TODO (don't really need to do anything here).
-	      
+		
+		
 	   }
 	
 	public void backFromInstruction(ActionEvent event) throws IOException {

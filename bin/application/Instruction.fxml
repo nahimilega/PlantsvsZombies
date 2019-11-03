@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainPane1" prefHeight="500.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController1">
+   <children>
+      <Button fx:id="backButton" layoutX="150.0" layoutY="404.0" mnemonicParsing="false" onAction="#backFromInstruction" onMouseClicked="#backFromInstruction" prefHeight="32.0" prefWidth="100.0" text="BACK" />
+      <ImageView fitHeight="220.0" fitWidth="440.0" layoutX="4.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Pictures/instruction1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
