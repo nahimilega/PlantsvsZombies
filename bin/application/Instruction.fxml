@@ -10,7 +10,7 @@
       <Button fx:id="backButton" layoutX="150.0" layoutY="404.0" mnemonicParsing="false" onAction="#backFromInstruction" onMouseClicked="#backFromInstruction" prefHeight="32.0" prefWidth="100.0" text="BACK" />
       <ImageView fitHeight="220.0" fitWidth="440.0" layoutX="4.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Pictures/instruction1.png" />
+            <Image url="@instruction1.png" />
          </image>
       </ImageView>
    </children>
