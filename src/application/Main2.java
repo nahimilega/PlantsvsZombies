@@ -28,7 +28,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.application.Application; 
 import javafx.scene.Scene; 
 import javafx.scene.control.Button; 
@@ -46,8 +47,9 @@ public class Main2 extends Application {
 	
 	public Row rows[];
 
+	public int sunToken;
 	public Main2() {
-		// TODO Auto-generated constructor stub
+		sunToken = 50;
 		rows = new Row[5];
 	}
 	
@@ -91,7 +93,7 @@ public class Main2 extends Application {
 	        Image image4 = new Image("/application/wallnut.png",80,90,false,false);
 	        
 	        ImageView imageView1 = new ImageView(image1);
-	        imageView1.setX(270);
+	        imageView1.setX(280);
 	        imageView1.setY(10);
 	        ImageView imageView2 = new ImageView(image2);
 	        imageView2.setX(190);
@@ -100,14 +102,14 @@ public class Main2 extends Application {
 	        imageView3.setX(100);
 	        imageView3.setY(10);
 	        ImageView imageView4 = new ImageView(image4);
-	        imageView4.setX(360);
+	        imageView4.setX(370);
 	        imageView4.setY(10);
 	        
 	        root.getChildren().add(imageView1);
 	        root.getChildren().add(imageView2);
 	        root.getChildren().add(imageView3);
 	        root.getChildren().add(imageView4);
-
+	        
 
 	        imageView1.setOnMouseReleased(new EventHandler<MouseEvent>() {
 	        	  @Override public void handle(MouseEvent mouseEvent) {
@@ -155,47 +157,46 @@ public class Main2 extends Application {
 	        	});
 	        
 
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	       
 	        // create a button 
-	        Button button = new Button("Menu"); 
-	        button.setLayoutX(1350);
-	        button.setLayoutY(10);
+	     
 	        // create a tile pane 
 	  
 	        // create a popup 
-	        Popup popup = new Popup(); 
-	        Button button2 = new Button("Save Game"); 
-	        Button button3 = new Button("Back To main menu"); 
-	        button3.setLayoutX(1350);
-	        button3.setLayoutY(40);
-	        AnchorPane root2 = new AnchorPane();
-	        root2.getChildren().add(button2);
-	        root2.getChildren().add(button3);
-	        popup.getContent().add(root2); 
-	        popup.setAutoHide(true); 
-	  
-	        // action event 
-	        EventHandler<ActionEvent> event =  
-	        new EventHandler<ActionEvent>() { 
-	            public void handle(ActionEvent e) 
-	            { 
-	                if (!popup.isShowing()) 
-	                    popup.show(theStage); 
-	            } 
-	        }; 
-	  
-	        // when button is pressed 
-	        button.setOnAction(event); 
 	        
+	        Button button2 = new Button("Save Game"); 
+	        button2.setTranslateX(1200);
+	        button2.setTranslateY(15);
+	        Button button3 = new Button("Exit"); 
+	        button3.setTranslateX(1300);
+	        button3.setTranslateY(15);
+
+     
 	        AnchorPane tilepane = new AnchorPane(); 
 	        
 	        
-	        tilepane.getChildren().add(button); 
+	        tilepane.getChildren().add(button3); 
+	        tilepane.getChildren().add(button2); 
+	        
 	        
 	        // create a scene 
-	        
+	        Label label = new Label("My LBL");
+	        tilepane.getChildren().add(label); 
 	        root.getChildren().add(tilepane);
-	  
-	        
+	        label.setTranslateY(78);
+	        label.setTranslateX(34);
+	        label.setFont(new Font("ArialBold", 25));
+	        label.setText(Integer.toString(sunToken));
 	        //theStage.setScene(scene1); 
 	        
 	        
@@ -205,7 +206,9 @@ public class Main2 extends Application {
 	            Duration.seconds(0.017),                // 60 FPS
 	            new EventHandler<ActionEvent>()
 	            {
-	                public void handle(ActionEvent ae)
+	                
+
+					public void handle(ActionEvent ae)
 	                {
 	                	
 	                    double t = (System.currentTimeMillis() - timeStart) / 1000.0; 
@@ -222,6 +225,13 @@ public class Main2 extends Application {
 	                    for (int i = 0; i < rows.length; i++) {
 							ans = rows[i].activate();
 						}
+	                    double time = 180 - t;
+	                    gc.setFont(new Font("Arial", 30));
+
+
+	                    gc.setStroke(Color.BLACK);
+	                    gc.strokeText("Time left: "+Integer.toString((int) time), 900, 30);
+
 	                    /*
 	                    gc.drawImage( earth, x, y );
 	                    gc.drawImage( ufo.getFrame(t), 450, 250 );
