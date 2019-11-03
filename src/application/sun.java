@@ -6,9 +6,10 @@ public class sun extends GameElements  {
 	
 	
 	
-	public sun() {
-		super(500, "/application/Sun",1,50,50);
+	public sun(int xCoordinate) {
+		super(500, "/application/sun",1,50,50);
 		// TODO Auto-generated constructor stub
+		this.xCoordinate = xCoordinate;
 	}
 
 }

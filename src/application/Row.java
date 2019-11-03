@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import application.Plants.Plants;
 import application.Plants.shooterPlant;
+import application.Plants.sunFlower;
 import application.Plants.wallnut;
 import application.Zombies.*;
 import javafx.scene.canvas.GraphicsContext;
@@ -34,8 +35,12 @@ public class Row {
 		Plants s = new shooterPlant(340);
 		Plants wall = new wallnut(500);
 		
-		plantList.add(wall);
+		sun sun =new sun(798);
+		sunList.add(sun);
 		
+		Plants sunf = new sunFlower(800);
+		plantList.add(wall);
+		plantList.add(sunf);
 		mover = new lawnMover();
 
 		plantList.add(s);
