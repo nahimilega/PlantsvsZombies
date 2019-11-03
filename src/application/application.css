@@ -1,5 +1,9 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-#bodybg{
-	-fx-background-image: url("/home/aanchal/eclipse-workspace/PlantsvsZombies/src/application/background.png")  
-	
+
+#pane{
+    -fx-background-image: url("backyard.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1400 800;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
 }

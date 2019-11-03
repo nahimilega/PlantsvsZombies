@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
  
 public class MyController implements Initializable {
  
@@ -40,7 +41,10 @@ public class MyController implements Initializable {
    @FXML
    private Image background;
    
-   
+   Stage stage;
+	public void setStage(Stage stage){
+		this.stage=stage;
+		}
   
    @Override
    public void initialize(URL location, ResourceBundle resources) {
