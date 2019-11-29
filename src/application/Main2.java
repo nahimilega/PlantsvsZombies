@@ -1,8 +1,5 @@
 package application;
 
-
-import java.security.PublicKey;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -65,6 +62,51 @@ public class Main2 extends Application {
 		return -1;
 	}
 	
+	public double getBlockNo(double xCoordinate) {
+		/*
+		 * Returns the x coordinate of block no corrosponding to the following x coordinate
+		 */
+		
+		if( xCoordinate >= 333 &&  xCoordinate <= 443) {
+			return 347;
+		}
+		if( xCoordinate >= 443 &&  xCoordinate <= 536) {
+			return 457;
+		}
+		
+		if( xCoordinate >= 536 &&  xCoordinate <= 646) {
+			return 549;
+		}
+		
+		if( xCoordinate >= 646 &&  xCoordinate <= 752) {
+			return 659;
+		}
+		
+		if( xCoordinate >= 752 &&  xCoordinate <= 860) {
+			return 769;
+		}
+		
+		if( xCoordinate >= 860 &&  xCoordinate <= 970) {
+			return 879;
+		}
+		if( xCoordinate >= 970 &&  xCoordinate <= 1066) {
+			return 988;
+		}
+		if( xCoordinate >= 1066 &&  xCoordinate <= 1169) {
+			return 1079;
+		}
+		if( xCoordinate >= 1169 &&  xCoordinate <= 1306) {
+			return 1190;
+		}
+
+		
+		
+		
+		return -1;
+		
+		
+		
+	}
 	
 	
 	public void makeBuyMeny(BorderPane root) {
@@ -110,11 +152,10 @@ public class Main2 extends Application {
 	        	    System.out.println(mouseEvent.getX());
 	        	    /// Testing part end
 	        	    
-	        	    
-	        	    
 	        	    int rowNo = getRowNo(mouseEvent.getY());
-	        	    if (rowNo != -1)
-	        	    	rows[rowNo].plantPlant(plantType, mouseEvent.getX());
+	        	    double blockCoordinate = getBlockNo(mouseEvent.getX());
+	        	    if (rowNo != -1 && blockCoordinate != -1)
+	        	    	rows[rowNo].plantPlant(plantType, blockCoordinate);
       	  }
       	});
         	

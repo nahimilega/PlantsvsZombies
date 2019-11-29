@@ -54,37 +54,58 @@ public class Row {
 		
 	}
 	
+	
+	public boolean findifPlantExist(int xCoordiante) {
+		/*
+		 * Check if the plant is preset at the specific location
+		 */
+		boolean isexist = false;
+		
+		for (int i = 0; i < plantList.size(); i++) {
+			if( xCoordiante == plantList.get(i).xCoordinate) {
+				isexist = true;
+				break;
+			}
+			
+		}
+		
+		return isexist;
+	}
+	
 	public void plantPlant(int plantType, Double xCoordiante) {
 		
 		Plants newPlants = null;
 		
-		if(plantType==0) {
-			/*
-			 * PLS CHANGE ME I AM CHERRY BOMB
-			 * TODO: HAHAHAHAHH
-			 */
-			newPlants = new sunFlower((int)Math.round(xCoordiante));
-		}
 		
-		else if (plantType == 1) {
-			newPlants = new shooterPlant((int)Math.round(xCoordiante));
+		if(!findifPlantExist((int)Math.round(xCoordiante))) {
 			
-		}
-		else if (plantType == 2) {
+			if(plantType==0) {
+				/*
+				 * PLS CHANGE ME I AM CHERRY BOMB
+				 * TODO: HAHAHAHAHH
+				 */
+				newPlants = new sunFlower((int)Math.round(xCoordiante));
+			}
+			
+			else if (plantType == 1) {
+				newPlants = new shooterPlant((int)Math.round(xCoordiante));
+				
+			}
+			else if (plantType == 2) {
 
-			newPlants = new sunFlower((int)Math.round(xCoordiante));
-			
+				newPlants = new sunFlower((int)Math.round(xCoordiante));
+				
+			}
+			else if (plantType == 3) {
+				newPlants = new wallnut((int)Math.round(xCoordiante));
+				
+			}	
+			//Plants 
+			plantList.add(newPlants);
 		}
-		else if (plantType == 3) {
-			newPlants = new wallnut((int)Math.round(xCoordiante));
-			
-		}
 		
 		
-		
-		
-		//Plants 
-		plantList.add(newPlants);
+
 	}
 	
 	public void addPea(int x) {
