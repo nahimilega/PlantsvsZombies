@@ -14,6 +14,7 @@ public class Row {
 	public SpriteManager sManager;
 	private ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
 	
+	private ArrayList<Zombie> passiveZombies = new ArrayList<Zombie>();
 	
 	private ArrayList<Plants> plantList = new ArrayList<Plants>();
 	private ArrayList<Pea> peaList = new ArrayList<Pea>();
@@ -113,6 +114,12 @@ public class Row {
 		peaList.add(pea);
 	}
 	
+	
+	public void addSun(int x) {
+		sun s = new sun(x);
+		sunList.add(s);
+	}
+	
 	public int activate() {
 		/*
 		 * Return 0 is loose else return 1
@@ -125,11 +132,19 @@ public class Row {
 		
 		
 		if(ctr%180==0) {
+			Plants s = new shooterPlant(340);
+			Plants sunflower = new sunFlower(300); // just a sample
 		    for (int counter = 0; counter < plantList.size(); counter++) { 		      
 		    	 Plants currplant = plantList.get(counter);
-		    	 Plants s = new shooterPlant(340);  // just a sample
+		    	 
+		    	   // just a sample
 		    	 if(currplant.getClass().equals(s.getClass())) {
 		    		 this.addPea(currplant.getx());
+		    	 }
+		    	 
+		    	 
+		    	 if(currplant.getClass().equals(sunflower.getClass())) {
+		    		 this.addSun(currplant.getx()+10);
 		    	 }
 		    }
 		    

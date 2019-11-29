@@ -48,37 +48,35 @@ public class MyController4 implements Initializable {
 		/*
 		   AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/MyScene.fxml"));
 		   level.getChildren().setAll(pane);
-		   
-		   
 		   */
 		Stage stage = (Stage) level.getScene().getWindow();
-		Main2 s=new Main2();
+		Main2 s=new Main2(1);
 		s.start(stage);
-		//Application.launch(Main2.class);
-
-		   
-		   
-		   
-		   
-		   
+		//Application.launch(Main2.class)
 	}
+	
+	
 	public void level2Start(ActionEvent event) throws IOException {
-		   AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/LevelOption.fxml"));
-		   level.getChildren().setAll(pane);
+		Stage stage = (Stage) level.getScene().getWindow();
+		Main2 s=new Main2(2);
+		s.start(stage);
 	}
 	
 	public void level3Start(ActionEvent event) throws IOException {
-		   AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/MyScene.fxml"));
-		   level.getChildren().setAll(pane);
+		Stage stage = (Stage) level.getScene().getWindow();
+		Main2 s=new Main2(3);
+		s.start(stage);
 	}
 	public void level4Start(ActionEvent event) throws IOException {
-		   AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/LevelOption.fxml"));
-		   level.getChildren().setAll(pane);
+		Stage stage = (Stage) level.getScene().getWindow();
+		Main2 s=new Main2(4);
+		s.start(stage);
 	}
 	
 	public void level5Start(ActionEvent event) throws IOException {
-		   AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/LevelOption.fxml"));
-		   level.getChildren().setAll(pane);
+		Stage stage = (Stage) level.getScene().getWindow();
+		Main2 s=new Main2(5);
+		s.start(stage);
 	}
 
 

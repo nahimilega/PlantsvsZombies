@@ -1,5 +1,8 @@
 package application;
 
+import java.util.ArrayList;
+
+import application.Zombies.Zombie;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -30,9 +33,15 @@ public class Main2 extends Application {
 	public Row rows[];
 
 	public int sunToken;
-	public Main2() {
+	
+	int level;
+	
+	public Main2(int level) {
+		super();
 		sunToken = 50;
+		this.level = level;
 		rows = new Row[5];
+		
 	}
 	
 	
@@ -85,7 +94,6 @@ public class Main2 extends Application {
 		if( xCoordinate >= 752 &&  xCoordinate <= 860) {
 			return 769;
 		}
-		
 		if( xCoordinate >= 860 &&  xCoordinate <= 970) {
 			return 879;
 		}
@@ -100,11 +108,7 @@ public class Main2 extends Application {
 		}
 
 		
-		
-		
 		return -1;
-		
-		
 		
 	}
 	
@@ -129,22 +133,35 @@ public class Main2 extends Application {
         imageView4.setX(370);
         imageView4.setY(10);
         
-        ImageView allplantOption[] = new ImageView[4];
-        allplantOption[0] = imageView1;
-        allplantOption[1] = imageView2;
-        allplantOption[2] = imageView3;
-        allplantOption[3] = imageView4;
-
+        //ImageView allplantOption[] = new ImageView[4];
         
+        
+        
+        ArrayList<ImageView> allplantOption = new ArrayList<ImageView>();
+        allplantOption.add(imageView2);
+        allplantOption.add(imageView3);
+        
+        if( this.level>1) {
+        	//Wallnut bomb is activated
+        	allplantOption.add(imageView4);
+        }
+        if( this.level>2) {
+        	//Cherry bomb is activated
+        	allplantOption.add(imageView1);
+        }
+
+
+       
         
         // To set the mouse event to plant plant
         
-        for (int i = 0; i < allplantOption.length; i++) {
+        for (int i = 0; i < allplantOption.size(); i++) {
 			final int plantType = i;
-        	allplantOption[i].setOnMouseReleased(new EventHandler<MouseEvent>() {
+        	allplantOption.get(i).setOnMouseReleased(new EventHandler<MouseEvent>() {
         		
         		
-          	  @Override public void handle(MouseEvent mouseEvent) {
+          	  @Override 
+          	  public void handle(MouseEvent mouseEvent) {
           		  
           		  /// Testing part
           		  System.out.println("YCoordinate");
@@ -159,16 +176,46 @@ public class Main2 extends Application {
       	  }
       	});
         	
-        	root.getChildren().add(allplantOption[i]);
+        	root.getChildren().add(allplantOption.get(i));
 		}
         
 	}
 	
 	
 	
+	
+	
+	
+	public void allocateZombie() {
+		ArrayList<Zombie> passiveZombies = new ArrayList<Zombie>();
+		
+		/*
+		 * Level 1 10 Normal zombie
+		 * Level 2 8 Normal 3 Traffic
+		 * Level 3 8 Normal 5 Traffic
+		 * Level 4 10 Normal 8 Traffic
+		 * Level 5 11 Normal 10 Traffic
+		 */
+		if( this.level == 1) {
+			
+		}
+		else if( this.level == 2) {
+			
+		}
+		
+	}
+	
 	@Override
 	public void start(Stage theStage) {
 		try {
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			BorderPane root = new BorderPane();
 			root.setId("pane");
@@ -196,8 +243,6 @@ public class Main2 extends Application {
 	        rows[2] = new Row(gc, 400, timeStart);
 	        rows[3] = new Row(gc, 525, timeStart);
 	        rows[4] = new Row(gc, 661, timeStart);
-	        
-	        
 	        
 	       
 	        // create a button 
