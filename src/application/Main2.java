@@ -1,5 +1,8 @@
 package application;
-	
+
+
+import java.security.PublicKey;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -8,38 +11,20 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-
-
-
-
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.application.Application; 
-import javafx.scene.Scene; 
+
 import javafx.scene.control.Button; 
 import javafx.scene.layout.*; 
-import javafx.event.ActionEvent; 
-import javafx.event.EventHandler; 
-import javafx.scene.control.Label; 
-import javafx.stage.Stage; 
-import javafx.stage.Popup; 
-  
+
 
 
 
@@ -51,6 +36,91 @@ public class Main2 extends Application {
 	public Main2() {
 		sunToken = 50;
 		rows = new Row[5];
+	}
+	
+	
+	public int getRowNo(double yCoordinate) {
+		/*
+		 * Returns the row no corrosponding to the following y coordinate
+		 */
+		if( yCoordinate >= 120 &&  yCoordinate <= 249) {
+			return 0;
+		}
+		else if( yCoordinate >= 249 &&  yCoordinate <= 381) {
+			return 1;
+		}
+		
+		else if( yCoordinate >= 381 &&  yCoordinate <= 512) {
+			return 2;
+		}
+		
+		else if( yCoordinate >= 512 &&  yCoordinate <= 640) {
+			return 3;
+		}
+		
+		else if( yCoordinate >= 640 &&  yCoordinate <= 763) {
+			return 4;
+		}	
+		
+		return -1;
+	}
+	
+	
+	
+	public void makeBuyMeny(BorderPane root) {
+        
+        Image image1 = new Image("/application/bomb.png",80,90,false,false);
+        Image image2 = new Image("/application/peaShooter.png",80,90,false,false);
+        Image image3 = new Image("/application/sunFlower.png",80,90,false,false);
+        Image image4 = new Image("/application/wallnut.png",80,90,false,false);
+        
+        ImageView imageView1 = new ImageView(image1);
+        imageView1.setX(280);
+        imageView1.setY(10);
+        ImageView imageView2 = new ImageView(image2);
+        imageView2.setX(190);
+        imageView2.setY(10);
+        ImageView imageView3 = new ImageView(image3);
+        imageView3.setX(100);
+        imageView3.setY(10);
+        ImageView imageView4 = new ImageView(image4);
+        imageView4.setX(370);
+        imageView4.setY(10);
+        
+        ImageView allplantOption[] = new ImageView[4];
+        allplantOption[0] = imageView1;
+        allplantOption[1] = imageView2;
+        allplantOption[2] = imageView3;
+        allplantOption[3] = imageView4;
+
+        
+        
+        // To set the mouse event to plant plant
+        
+        for (int i = 0; i < allplantOption.length; i++) {
+			final int plantType = i;
+        	allplantOption[i].setOnMouseReleased(new EventHandler<MouseEvent>() {
+        		
+        		
+          	  @Override public void handle(MouseEvent mouseEvent) {
+          		  
+          		  /// Testing part
+          		  System.out.println("YCoordinate");
+	        	    System.out.println(mouseEvent.getY());
+	        	    System.out.println(mouseEvent.getX());
+	        	    /// Testing part end
+	        	    
+	        	    
+	        	    
+	        	    int rowNo = getRowNo(mouseEvent.getY());
+	        	    if (rowNo != -1)
+	        	    	rows[rowNo].plantPlant(plantType, mouseEvent.getX());
+      	  }
+      	});
+        	
+        	root.getChildren().add(allplantOption[i]);
+		}
+        
 	}
 	
 	
@@ -85,85 +155,6 @@ public class Main2 extends Application {
 	        rows[2] = new Row(gc, 400, timeStart);
 	        rows[3] = new Row(gc, 525, timeStart);
 	        rows[4] = new Row(gc, 661, timeStart);
-	        
-	        
-	        Image image1 = new Image("/application/bomb.png",80,90,false,false);
-	        Image image2 = new Image("/application/peaShooter.png",80,90,false,false);
-	        Image image3 = new Image("/application/sunFlower.png",80,90,false,false);
-	        Image image4 = new Image("/application/wallnut.png",80,90,false,false);
-	        
-	        ImageView imageView1 = new ImageView(image1);
-	        imageView1.setX(280);
-	        imageView1.setY(10);
-	        ImageView imageView2 = new ImageView(image2);
-	        imageView2.setX(190);
-	        imageView2.setY(10);
-	        ImageView imageView3 = new ImageView(image3);
-	        imageView3.setX(100);
-	        imageView3.setY(10);
-	        ImageView imageView4 = new ImageView(image4);
-	        imageView4.setX(370);
-	        imageView4.setY(10);
-	        
-	        root.getChildren().add(imageView1);
-	        root.getChildren().add(imageView2);
-	        root.getChildren().add(imageView3);
-	        root.getChildren().add(imageView4);
-	        
-
-	        imageView1.setOnMouseReleased(new EventHandler<MouseEvent>() {
-	        	  @Override public void handle(MouseEvent mouseEvent) {
-	        		  
-		        	    System.out.println(mouseEvent.getX());
-		        	    //System.out.println(mouseEvent.getY());
-		        	    //System.out.println(mouseEvent.getSceneX());
-		        	    System.out.println(mouseEvent.getY());
-
-	        	  }
-	        	});
-	        imageView2.setOnMouseReleased(new EventHandler<MouseEvent>() {
-	        	  @Override public void handle(MouseEvent mouseEvent) {
-	        		  
-		        	    System.out.println(mouseEvent.getX());
-		        	    //System.out.println(mouseEvent.getY());
-		        	    //System.out.println(mouseEvent.getSceneX());
-		        	    System.out.println(mouseEvent.getY());
-
-	        	  }
-	        	});
-	        
-	        
-	        imageView3.setOnMouseReleased(new EventHandler<MouseEvent>() {
-	        	  @Override public void handle(MouseEvent mouseEvent) {
-	        		  
-		        	    System.out.println(mouseEvent.getX());
-		        	    //System.out.println(mouseEvent.getY());
-		        	    //System.out.println(mouseEvent.getSceneX());
-		        	    System.out.println(mouseEvent.getY());
-
-	        	  }
-	        	});
-	        
-	        
-	        imageView4.setOnMouseReleased(new EventHandler<MouseEvent>() {
-	        	  @Override public void handle(MouseEvent mouseEvent) {
-	        		  
-		        	    System.out.println(mouseEvent.getX());
-		        	    //System.out.println(mouseEvent.getY());
-		        	    //System.out.println(mouseEvent.getSceneX());
-		        	    System.out.println(mouseEvent.getY());
-
-	        	  }
-	        	});
-	        
-
-	        
-	        
-	        
-	        
-	        
-	        
-	        
 	        
 	        
 	        
@@ -202,12 +193,20 @@ public class Main2 extends Application {
 	        
 	        
 	        
+	        // This is the buy plant menu
+	        
+	        this.makeBuyMeny(root);
+	        
+	     // Buy menu ends here
+	        
+	        
+	        
+	        
 	        KeyFrame kf = new KeyFrame(
 	            Duration.seconds(0.017),                // 60 FPS
 	            new EventHandler<ActionEvent>()
 	            {
-	                
-
+	                 
 					public void handle(ActionEvent ae)
 	                {
 	                	
@@ -257,9 +256,11 @@ public class Main2 extends Application {
 		}
 	}
 	
-	public void something() {
-		launch();
-	}
+	public static void main(String[] args) {
+		launch(args);
+	} 
+		
+	
 }
 
 

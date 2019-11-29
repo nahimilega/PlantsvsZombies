@@ -38,14 +38,14 @@ public class MyController implements Initializable {
    private Button backtomenuButton;
    @FXML
    private Image background;
-   @FXML
-   private Label sach;
+   //@FXML
+   //private Label sach;
    
    Stage stage;
 	public void setStage(Stage stage){
 		this.stage=stage;
 		}
-  
+
    @Override
    public void initialize(URL location, ResourceBundle resources) {
  

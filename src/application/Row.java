@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 
 import application.Plants.Plants;
+import application.Plants.cherryBomb;
 import application.Plants.shooterPlant;
 import application.Plants.sunFlower;
 import application.Plants.wallnut;
@@ -53,9 +54,37 @@ public class Row {
 		
 	}
 	
-	public int plantPlant() {
+	public void plantPlant(int plantType, Double xCoordiante) {
 		
-		return 0;
+		Plants newPlants = null;
+		
+		if(plantType==0) {
+			/*
+			 * PLS CHANGE ME I AM CHERRY BOMB
+			 * TODO: HAHAHAHAHH
+			 */
+			newPlants = new sunFlower((int)Math.round(xCoordiante));
+		}
+		
+		else if (plantType == 1) {
+			newPlants = new shooterPlant((int)Math.round(xCoordiante));
+			
+		}
+		else if (plantType == 2) {
+
+			newPlants = new sunFlower((int)Math.round(xCoordiante));
+			
+		}
+		else if (plantType == 3) {
+			newPlants = new wallnut((int)Math.round(xCoordiante));
+			
+		}
+		
+		
+		
+		
+		//Plants 
+		plantList.add(newPlants);
 	}
 	
 	public void addPea(int x) {
