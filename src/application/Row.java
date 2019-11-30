@@ -8,7 +8,11 @@ import application.Plants.shooterPlant;
 import application.Plants.sunFlower;
 import application.Plants.wallnut;
 import application.Zombies.*;
+import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 public class Row {
 	public SpriteManager sManager;
@@ -23,7 +27,7 @@ public class Row {
 	
 	public ArrayList<sun> sunList = new ArrayList<sun>();
 	private lawnMover mover;
-	
+	AnchorPane sunPane;
 
 	final int rowY;
 	long timeStart;
@@ -51,9 +55,18 @@ public class Row {
 	}
 	
 	
+	public void setpane(AnchorPane sunPane) {
+		this.sunPane  = sunPane;
+		
+	}
+	
+	
+	
 	public void addZombie() {
 		
 	}
+	
+	
 	
 	
 	public boolean findifPlantExist(int xCoordiante) {
@@ -117,8 +130,32 @@ public class Row {
 	
 	public void addSun(int x) {
 		sun s = new sun(x);
-		sunList.add(s);
+		//sunList.add(s);
+        ImageView imageView1 = new ImageView(s.getFrame(1));
+        imageView1.setX(s.xCoordinate);
+        imageView1.setY(rowY);
+        imageView1.setOnMouseReleased(new EventHandler<MouseEvent>() {
+    		
+    		
+        	  @Override 
+        	  public void handle(MouseEvent mouseEvent) {
+        		  
+        		  /// Testing part
+        		  sunPane.getChildren().remove(imageView1);
+        		  //sunToken = 
+
+
+    	  }
+    	});
+        
+        sunPane.getChildren().add(imageView1);
+        
 	}
+	
+	
+	
+	
+	
 	
 	public int activate() {
 		/*
@@ -146,6 +183,7 @@ public class Row {
 		    	 if(currplant.getClass().equals(sunflower.getClass())) {
 		    		 this.addSun(currplant.getx()+10);
 		    	 }
+		    	
 		    }
 		    
 		}

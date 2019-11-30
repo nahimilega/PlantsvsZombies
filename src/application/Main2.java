@@ -226,6 +226,9 @@ public class Main2 extends Application {
 			theStage.setScene(scene);
 			
 			
+			
+
+			
 			Canvas canvas = new Canvas( 1400, 800 );
 	        root.getChildren().add( canvas );
 	        
@@ -244,6 +247,10 @@ public class Main2 extends Application {
 	        rows[3] = new Row(gc, 525, timeStart);
 	        rows[4] = new Row(gc, 661, timeStart);
 	        
+	        AnchorPane sunPane = new AnchorPane(); 
+			for (int i = 0; i < rows.length; i++) {
+				rows[i].setpane(sunPane);
+			}
 	       
 	        // create a button 
 	     
@@ -273,11 +280,11 @@ public class Main2 extends Application {
 	        label.setTranslateY(78);
 	        label.setTranslateX(34);
 	        label.setFont(new Font("ArialBold", 25));
-	        label.setText(Integer.toString(sunToken));
+	        
 	        //theStage.setScene(scene1); 
 	        
 	        
-	        
+	        root.getChildren().add( sunPane );
 	        
 	        // This is the buy plant menu
 	        
@@ -316,7 +323,7 @@ public class Main2 extends Application {
 
 	                    gc.setStroke(Color.BLACK);
 	                    gc.strokeText("Time left: "+Integer.toString((int) time), 900, 30);
-
+	                    label.setText(Integer.toString(sunToken));
 	                    /*
 	                    gc.drawImage( earth, x, y );
 	                    gc.drawImage( ufo.getFrame(t), 450, 250 );
