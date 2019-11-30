@@ -7,7 +7,9 @@ import application.Zombies.Zombie;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 
 public class SpriteManager {
 	
@@ -35,6 +37,10 @@ public class SpriteManager {
 		this.rowY = rowY;
 		
 	}
+	
+	
+
+	
 	
 	
 	public void removedeadzombie() {
@@ -114,6 +120,7 @@ public class SpriteManager {
 	     ///Mover movements
 		if(mover.isalive == true) {
 			gc.drawImage( mover.getFrame(t), mover.getx(), rowY );
+			
 		}
 		removedeadplant();
 		removedeadzombie();

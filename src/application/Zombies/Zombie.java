@@ -11,7 +11,7 @@ public abstract class Zombie extends GameElements {
 	protected int health;
 	public boolean collided;
 	public int attack;
-	
+	private double ctr=0;
 	
 	public Zombie(Double duration, String nameOfImage, int noOfImage, int sizeX , int sizeY, int health) {
 		super(duration,nameOfImage,noOfImage, sizeX ,sizeY);
@@ -23,11 +23,13 @@ public abstract class Zombie extends GameElements {
 	}
 	
 	public void activate() {
+		ctr++;
 		if(this.health <= 0) {
 			this.isalive = false;
 		}
 		if(collided == false) {
-			this.xCoordinate = this.xCoordinate-1; 
+			if(ctr%2==0)
+				this.xCoordinate = this.xCoordinate-1; 
 		}
 		
 		
@@ -37,6 +39,10 @@ public abstract class Zombie extends GameElements {
 		return timeOut;
 	}
 
+	
+	public void hitbymover() {
+		this.health = 0;
+	}
 	public void setTimeOut() {
 		Random rand = new Random(); 
 		this.timeOut = rand.nextInt(10000);;

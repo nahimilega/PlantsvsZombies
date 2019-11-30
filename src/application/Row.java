@@ -10,6 +10,8 @@ import application.Plants.wallnut;
 import application.Zombies.*;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.Light.Distant;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -32,7 +34,7 @@ public class Row {
 
 	final int rowY;
 	long timeStart;
-
+	int deathCtr =0;
 
 	public Row(GraphicsContext gc, int rowY, long timeStart,Main2 main) {
 
@@ -65,7 +67,27 @@ public class Row {
 
 	}
 
+	public void showGameLost() {
+		Image img = new Image( "/application/resources/gameOver.jpg",1400, 900, false, false );
+		
+		
+        ImageView imageView1 = new ImageView(img);
+        this.deathCtr++;
 
+        sunPane.getChildren().add(imageView1);
+        if(this.deathCtr>2) {
+        	
+        
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        
+        System.exit(0);
+        }
+	}
 
 	public void addZombie() {
 		/*
@@ -191,6 +213,28 @@ public class Row {
 			if(flag == 0 && zombieList.get(counter).collided == true) {
 				zombieList.get(counter).collided = false;
 			}
+			
+			
+			
+			
+			//// For mover collision
+			
+			int dist = zombieList.get(counter).xCoordinate - mover.xCoordinate;
+			
+			if(dist< mover.sizeX && dist > 0 ) {
+				mover.isactive = true;
+				zombieList.get(counter).hitbymover();
+				
+			}
+			
+			//// Game lose condition
+			if(zombieList.get(counter).xCoordinate < 300) {
+				// Game lost 
+				this.showGameLost();
+			}
+			
+			
+			
 		}
 		
 		

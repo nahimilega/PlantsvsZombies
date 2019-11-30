@@ -6,7 +6,7 @@ public class lawnMover extends GameElements{
 	
 	Image stillImage;
 	
-	private boolean isactive;
+	public boolean isactive;
 	
 	public lawnMover() {
 		super(0.22, "/application/resources/lawnMover",2,70,70);
@@ -18,6 +18,12 @@ public class lawnMover extends GameElements{
 	@Override
 	public Image getFrame(double time) {
 		if (isactive) {
+			this.xCoordinate += 10;
+			
+			if(this.xCoordinate > 1500) {
+				this.isalive = false;
+			}
+			
 			return image.getFrame(time);
 		}
 		else {
