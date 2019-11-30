@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import application.Plants.Plants;
 import application.Zombies.Zombie;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
 
 public class SpriteManager {
 	
@@ -94,7 +96,7 @@ public class SpriteManager {
 	     for (int counter = 0; counter < sunList.size(); counter++) { 		      
 	    	 sun currsun = sunList.get(counter); 
 	    	 gc.drawImage( currsun.getFrame(t), currsun.getx(), rowY );
-	      }  
+      }  
 		
 	     ///Mover movements
 		if(mover.isalive == true) {

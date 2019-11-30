@@ -1,6 +1,8 @@
 package application;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 public class sun extends GameElements  {
 	
@@ -11,6 +13,12 @@ public class sun extends GameElements  {
 		this.xCoordinate = xCoordinate;
 	}
 
+	public void setOnMousePressed(EventHandler<MouseEvent> eventHandler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
 
 
