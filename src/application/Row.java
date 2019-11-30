@@ -23,8 +23,9 @@ public class Row {
 	private ArrayList<Plants> plantList = new ArrayList<Plants>();
 	private ArrayList<Pea> peaList = new ArrayList<Pea>();
 
+	private Main2 main;
 	private double ctr;
-
+	
 	public ArrayList<sun> sunList = new ArrayList<sun>();
 	private lawnMover mover;
 	AnchorPane sunPane;
@@ -33,10 +34,12 @@ public class Row {
 	long timeStart;
 
 
-	public Row(GraphicsContext gc, int rowY, long timeStart) {
+	public Row(GraphicsContext gc, int rowY, long timeStart,Main2 main) {
 
 		this.rowY = rowY;
 		ctr = 0;
+		
+		this.main = main;
 		/*
 		Plants s = new shooterPlant(340);
 		Plants wall = new wallnut(500);
@@ -109,10 +112,7 @@ public class Row {
 		if(!findifPlantExist((int)Math.round(xCoordiante))) {
 
 			if(plantType==0) {
-				/*
-				 * PLS CHANGE ME I AM CHERRY BOMB
-				 * TODO: HAHAHAHAHH
-				 */
+
 				newPlants = new sunFlower((int)Math.round(xCoordiante));
 			}
 
@@ -121,12 +121,15 @@ public class Row {
 
 			}
 			else if (plantType == 2) {
-
-				newPlants = new sunFlower((int)Math.round(xCoordiante));
+				newPlants = new wallnut((int)Math.round(xCoordiante));
 
 			}
 			else if (plantType == 3) {
-				newPlants = new wallnut((int)Math.round(xCoordiante));
+				/*
+				 * PLS CHANGE ME I AM CHERRY BOMB
+				 * TODO: HAHAHAHAHH
+				 */
+				newPlants = new sunFlower((int)Math.round(xCoordiante));
 
 			}
 			//Plants
@@ -156,6 +159,7 @@ public class Row {
         		  /// Testing part
         		  sunPane.getChildren().remove(imageView1);
         		  //sunToken =
+        		  main.increaseSunToken(10);
 
 
     	  }

@@ -10,8 +10,6 @@ import javafx.scene.image.Image;
 
 class shooter extends Plants{
 
-
-
 	public shooter(String nameOfImage, int noOfImage, int sizeX , int sizeY) {
 
 		super(0.25, nameOfImage,noOfImage,sizeX,sizeY);
