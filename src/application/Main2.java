@@ -140,8 +140,8 @@ public class Main2 extends Application {
 
 
         ArrayList<ImageView> allplantOption = new ArrayList<ImageView>();
-        allplantOption.add(imageView2);
         allplantOption.add(imageView3);
+        allplantOption.add(imageView2);
 
         if( this.level>1) {
         	//Wallnut bomb is activated
@@ -158,12 +158,11 @@ public class Main2 extends Application {
 			final int plantType = i;
         	allplantOption.get(i).setOnMouseReleased(new EventHandler<MouseEvent>() {
 
-
           	  @Override
           	  public void handle(MouseEvent mouseEvent) {
-          		  
-          		  /// Testing part
-          		  System.out.println("YCoordinate");
+
+          		    /// Testing part
+          		    System.out.println("YCoordinate");
 	        	    System.out.println(mouseEvent.getY());
 	        	    System.out.println(mouseEvent.getX());
 	        	    /// Testing part end
@@ -172,6 +171,17 @@ public class Main2 extends Application {
 	        	    double blockCoordinate = getBlockNo(mouseEvent.getX());
 	        	    if (rowNo != -1 && blockCoordinate != -1)
 	        	    	rows[rowNo].plantPlant(plantType, blockCoordinate);
+	        	    if(sunToken<50) {
+
+	        	    }
+	        	    if (plantType==1) {
+	        	    	sunToken=sunToken-100;
+	        	    }
+	        	    if (plantType==2) {
+	        	    	sunToken=sunToken-50;
+	        	    }
+
+
       	  }
       	});
 
@@ -181,6 +191,11 @@ public class Main2 extends Application {
 	}
 
 
+
+
+	public void increaseSunToken(int inc) {
+		this.sunToken += inc ;
+	}
 
 	public void allocateZombie() {
 
@@ -267,11 +282,11 @@ public class Main2 extends Application {
 	        final long timeStart = System.currentTimeMillis();
 
 
-	        rows[0] = new Row(gc, 140, timeStart);
-	        rows[1] = new Row(gc, 260, timeStart);
-	        rows[2] = new Row(gc, 400, timeStart);
-	        rows[3] = new Row(gc, 525, timeStart);
-	        rows[4] = new Row(gc, 661, timeStart);
+	        rows[0] = new Row(gc, 140, timeStart,this);
+	        rows[1] = new Row(gc, 260, timeStart,this);
+	        rows[2] = new Row(gc, 400, timeStart,this);
+	        rows[3] = new Row(gc, 525, timeStart,this);
+	        rows[4] = new Row(gc, 661, timeStart,this);
 
 	        allocateZombie();
 	        AnchorPane sunPane = new AnchorPane();
