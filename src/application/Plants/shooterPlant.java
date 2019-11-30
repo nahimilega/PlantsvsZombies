@@ -6,15 +6,11 @@ import javafx.scene.image.Image;
 
 
 
-
-
 class shooter extends Plants{
-
-
 
 	public shooter(String nameOfImage, int noOfImage, int sizeX , int sizeY) {
 
-		super(0.25, nameOfImage,noOfImage,sizeX,sizeY);
+		super(0.25, nameOfImage,noOfImage,sizeX,sizeY,100);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -24,7 +20,6 @@ class shooter extends Plants{
 public class shooterPlant extends shooter{
 
 
-	
 	public shooterPlant(int xCoordinate) {
 		super("/application/resources/plants/shooterPlant",2,50,50);
 		this.xCoordinate = xCoordinate;

@@ -8,12 +8,6 @@ public class normalZombie extends Zombie {
 		this.xCoordinate = 1450;
 	}
 	
-	public void activate() {
-		if(this.health <= 0) {
-			this.isalive = false;
-		}
-		this.xCoordinate = this.xCoordinate-1; 
-		
-	}
+
 	
 }

@@ -8,9 +8,5 @@ public class trafficZombie extends Zombie {
 		this.xCoordinate = 1450;
 	}
 	
-	public void activate() {
-		this.xCoordinate = this.xCoordinate-1; 
-		
-	}
 	
 }

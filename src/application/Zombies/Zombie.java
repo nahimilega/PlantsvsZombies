@@ -9,15 +9,29 @@ public abstract class Zombie extends GameElements {
 	
 	private int timeOut;
 	protected int health;
+	public boolean collided;
+	public int attack;
+	
 	
 	public Zombie(Double duration, String nameOfImage, int noOfImage, int sizeX , int sizeY, int health) {
 		super(duration,nameOfImage,noOfImage, sizeX ,sizeY);
 		setTimeOut();
 		this.health = health;
+		this.collided = false;
+		this.attack = 1;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public  abstract void activate();
+	public void activate() {
+		if(this.health <= 0) {
+			this.isalive = false;
+		}
+		if(collided == false) {
+			this.xCoordinate = this.xCoordinate-1; 
+		}
+		
+		
+	}
 
 	public int getTimeOut() {
 		return timeOut;

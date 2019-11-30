@@ -74,8 +74,6 @@ public class Row {
 				zombieList.add(passiveZombies.get(i));
 			}
 		}
-
-
 	}
 
 
@@ -84,6 +82,10 @@ public class Row {
 	}
 
 
+
+	
+	
+	
 	public boolean findifPlantExist(int xCoordiante) {
 		/*
 		 * Check if the plant is preset at the specific location
@@ -165,7 +167,31 @@ public class Row {
 
 	}
 
+	public void detectplantzombiecollision() {
+		
+		for (int counter = 0; counter < zombieList.size(); counter++) {
+			int flag = 0;
+			for (int i = 0; i < plantList.size(); i++) {
+				
+				int dist = zombieList.get(counter).xCoordinate - plantList.get(i).xCoordinate;
+				if(dist < plantList.get(i).sizeX && dist > 0 ) {
+					// collision happened
+					zombieList.get(counter).collided = true;
+					plantList.get(i).reduceHealth(zombieList.get(counter).attack);
+					flag = 5;
+					break;
+				}
+				
 
+			}
+			if(flag == 0 && zombieList.get(counter).collided == true) {
+				zombieList.get(counter).collided = false;
+			}
+		}
+		
+		
+	}
+	
 	public void detectpeacollision() {
 		/*
 		 * Detect if pea collides with zombie or not
@@ -175,7 +201,6 @@ public class Row {
 			for (int i = 0; i < zombieList.size(); i++) {
 				if(zombieList.get(i).xCoordinate - currPea.xCoordinate < 3 && (zombieList.get(i).xCoordinate - currPea.xCoordinate) >= 0 ) {
 					zombieList.get(i).reducehealth(currPea.attack);
-
 					currPea.isalive = false;
 					break;
 				}
@@ -201,7 +226,7 @@ public class Row {
 
 		detectpeacollision();
 
-
+		detectplantzombiecollision();
 
 		if(ctr%180==0) {
 			Plants s = new shooterPlant(340);

@@ -64,6 +64,19 @@ public class SpriteManager {
 		}
 	}
 	
+	public void removedeadplant() {
+		ArrayList<Plants> removeindex = new ArrayList<Plants>();
+		for (int i = 0; i < plantList.size(); i++) {
+			if(plantList.get(i).isalive == false ) {
+				removeindex.add(plantList.get(i));
+			}
+		}
+		for (int i = 0; i < removeindex.size(); i++) {
+			plantList.remove((Plants)removeindex.get(i));
+			//System.out.println(removeindex.get(i));
+		}
+	}
+	
 	
 	public void update() {
 		double t = (System.currentTimeMillis() - timeStart) / 1000.0;
@@ -102,7 +115,7 @@ public class SpriteManager {
 		if(mover.isalive == true) {
 			gc.drawImage( mover.getFrame(t), mover.getx(), rowY );
 		}
-		
+		removedeadplant();
 		removedeadzombie();
 		removedeadpea();
 		

@@ -9,7 +9,7 @@ public class GameElements {
 	protected int xCoordinate;
 	
 	protected boolean isalive;
-	
+	protected int sizeX;
 
 	
 	public GameElements(double duration, String nameOfImage, int noOfImage, int sizeX , int sizeY) {
@@ -24,6 +24,7 @@ public class GameElements {
 		
         image.frames = imageArray;
         image.duration = duration;
+        this.sizeX = sizeX;
 	}
 	
 	public int getx() {

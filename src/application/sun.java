@@ -9,7 +9,7 @@ public class sun extends GameElements  {
 
 	public sun(int xCoordinate) {
 		super(500, "/application/resources/sun",1,50,50);
-		// TODO Auto-generated constructor stub
+
 		this.xCoordinate = xCoordinate;
 	}
 

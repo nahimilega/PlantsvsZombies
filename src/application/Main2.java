@@ -11,7 +11,6 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Scene;
@@ -162,7 +161,7 @@ public class Main2 extends Application {
 
           	  @Override
           	  public void handle(MouseEvent mouseEvent) {
-
+          		  
           		  /// Testing part
           		  System.out.println("YCoordinate");
 	        	    System.out.println(mouseEvent.getY());
@@ -180,9 +179,6 @@ public class Main2 extends Application {
 		}
 
 	}
-
-
-
 
 
 
