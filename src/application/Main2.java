@@ -37,6 +37,7 @@ public class Main2 extends Application {
 	public int sunToken;
 
 	int level;
+	int diff = 0;
 
 	public Main2(int level) {
 		super();
@@ -115,7 +116,7 @@ public class Main2 extends Application {
 	}
 
 
-	public void makeBuyMeny(BorderPane root) {
+	public void makeBuyMeny(BorderPane root, Label label) {
 
         Image image1 = new Image("/application/resources/bomb.png",80,90,false,false);
         Image image2 = new Image("/application/resources/peaShooter.png",80,90,false,false);
@@ -169,17 +170,25 @@ public class Main2 extends Application {
 
 	        	    int rowNo = getRowNo(mouseEvent.getY());
 	        	    double blockCoordinate = getBlockNo(mouseEvent.getX());
-	        	    if (rowNo != -1 && blockCoordinate != -1)
-	        	    	rows[rowNo].plantPlant(plantType, blockCoordinate);
-	        	    if(sunToken<50) {
-
-	        	    }
+	        	    int oldToken = sunToken;
 	        	    if (plantType==1) {
 	        	    	sunToken=sunToken-100;
 	        	    }
-	        	    if (plantType==2) {
+	        	    if (plantType==0) {
 	        	    	sunToken=sunToken-50;
 	        	    }
+	        	    if(sunToken<0) {
+	        	    	sunToken = oldToken;
+	        	    }
+	        	    else {
+		        	    if (rowNo != -1 && blockCoordinate != -1)
+		        	    	rows[rowNo].plantPlant(plantType, blockCoordinate);
+	        	    }
+	        	    
+
+	        	    label.setTextFill(Color.web("#000000" , 0.8));
+	        	    
+
 
 
       	  }
@@ -187,6 +196,25 @@ public class Main2 extends Application {
 
         	root.getChildren().add(allplantOption.get(i));
 		}
+        
+      for (int i = 0; i < allplantOption.size(); i++) {
+			final int plantType = i;
+        	allplantOption.get(i).setOnMousePressed(new EventHandler<MouseEvent>() {
+
+          	  @Override
+          	  public void handle(MouseEvent mouseEvent) {
+          		  int diff = sunToken - (plantType+1)*50;
+	        	    if(diff<0) {
+	        	    	label.setTextFill(Color.web("#ff0000", 0.8));
+	        	    }
+          		  
+      	  }
+      	});
+
+		}
+
+        
+        
 
 	}
 
@@ -327,10 +355,10 @@ public class Main2 extends Application {
 
 
 	        root.getChildren().add( sunPane );
-
+	        
 	        // This is the buy plant menu
 
-	        this.makeBuyMeny(root);
+	        this.makeBuyMeny(root,label);
 
 	     // Buy menu ends here
 
