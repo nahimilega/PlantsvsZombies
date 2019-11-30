@@ -26,7 +26,7 @@ public class shooterPlant extends shooter{
 
 	
 	public shooterPlant(int xCoordinate) {
-		super("/application/Plants/shooterPlant",2,50,50);
+		super("/application/resources/plants/shooterPlant",2,50,50);
 		this.xCoordinate = xCoordinate;
 		
 	}	

@@ -32,10 +32,35 @@ public class SpriteManager {
 		this.timeStart = timeStart;
 		this.rowY = rowY;
 		
+	}
+	
+	
+	public void removedeadzombie() {
+		ArrayList<Zombie> removeindex = new ArrayList<Zombie>();
+		for (int i = 0; i < zombieList.size(); i++) {
+			if(zombieList.get(i).isalive == false ) {
+				removeindex.add(zombieList.get(i));
+			}
+		}
+		for (int i = 0; i < removeindex.size(); i++) {
+			zombieList.remove((Zombie)removeindex.get(i));
+		}
 		
 	}
 	
 	
+	public void removedeadpea() {
+		ArrayList<Pea> removeindex = new ArrayList<Pea>();
+		for (int i = 0; i < peaList.size(); i++) {
+			if(peaList.get(i).isalive == false ) {
+				removeindex.add(peaList.get(i));
+			}
+		}
+		for (int i = 0; i < removeindex.size(); i++) {
+			peaList.remove((Pea)removeindex.get(i));
+			//System.out.println(removeindex.get(i));
+		}
+	}
 	
 	
 	public void update() {
@@ -62,6 +87,7 @@ public class SpriteManager {
 	    	 Pea currpea = peaList.get(counter);
 	    	 currpea.activate();
 	    	 gc.drawImage( currpea.getFrame(t), currpea.getx(), rowY +10 );
+	    	 
 	      }
 	     
 	     // Draw sun
@@ -74,6 +100,9 @@ public class SpriteManager {
 		if(mover.isalive == true) {
 			gc.drawImage( mover.getFrame(t), mover.getx(), rowY );
 		}
+		
+		removedeadzombie();
+		removedeadpea();
 		
 	}
 	

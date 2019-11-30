@@ -24,16 +24,15 @@ public class Row {
 	public ArrayList<sun> sunList = new ArrayList<sun>();
 	private lawnMover mover;
 	
-
 	final int rowY;
 	long timeStart;
 
 	
 	public Row(GraphicsContext gc, int rowY, long timeStart) {
-		Zombie zombie = new normalZombie(1000);
-		zombieList.add(zombie);
+
 		this.rowY = rowY;
 		ctr = 0;
+		/*
 		Plants s = new shooterPlant(340);
 		Plants wall = new wallnut(500);
 		
@@ -43,18 +42,34 @@ public class Row {
 		Plants sunf = new sunFlower(800);
 		plantList.add(wall);
 		plantList.add(sunf);
+		plantList.add(s);
+		*/
 		mover = new lawnMover();
 
-		plantList.add(s);
+		
 		sManager = new SpriteManager(gc, zombieList, plantList, peaList, sunList, mover, rowY, timeStart);
 			
 	}
 	
 	
 	public void addZombie() {
+		/*
+		 * Convert passive to active zombie when time comes
+		 */
+		//System.out.println(passiveZombies.size());
+		for (int i = 0; i < passiveZombies.size(); i++) {
+			if(passiveZombies.get(i).getTimeOut() == this.ctr ) {
+				zombieList.add(passiveZombies.get(i));
+			}
+		}
+		
 		
 	}
 	
+	
+	public void setPassivearray(ArrayList<Zombie> pzom) {
+		this.passiveZombies = pzom;
+	}
 	
 	public boolean findifPlantExist(int xCoordiante) {
 		/*
@@ -105,8 +120,6 @@ public class Row {
 			plantList.add(newPlants);
 		}
 		
-		
-
 	}
 	
 	public void addPea(int x) {
@@ -120,6 +133,24 @@ public class Row {
 		sunList.add(s);
 	}
 	
+	
+	public void detectpeacollision() {
+		/*
+		 * Detect if pea collides with zombie or not
+		 */
+		for (int counter = 0; counter < peaList.size(); counter++) {
+			Pea currPea = peaList.get(counter);
+			for (int i = 0; i < zombieList.size(); i++) {
+				if(zombieList.get(i).xCoordinate - currPea.xCoordinate < 3 && (zombieList.get(i).xCoordinate - currPea.xCoordinate) >= 0 ) {
+					zombieList.get(i).reducehealth(currPea.attack);
+					
+					currPea.isalive = false;
+					break;
+				}
+			}
+		}
+	}
+	
 	public int activate() {
 		/*
 		 * Return 0 is loose else return 1
@@ -130,18 +161,24 @@ public class Row {
 		 */
 		this.ctr++;
 		
+		addZombie();
+		
+		
+		detectpeacollision();
+		
+		
 		
 		if(ctr%180==0) {
 			Plants s = new shooterPlant(340);
 			Plants sunflower = new sunFlower(300); // just a sample
 		    for (int counter = 0; counter < plantList.size(); counter++) { 		      
-		    	 Plants currplant = plantList.get(counter);
+		    	 Plants
+		    	 currplant = plantList.get(counter);
 		    	 
 		    	   // just a sample
 		    	 if(currplant.getClass().equals(s.getClass())) {
 		    		 this.addPea(currplant.getx());
 		    	 }
-		    	 
 		    	 
 		    	 if(currplant.getClass().equals(sunflower.getClass())) {
 		    		 this.addSun(currplant.getx()+10);
@@ -149,9 +186,6 @@ public class Row {
 		    }
 		    
 		}
-		
-		
-		
 		
 		sManager.update();
 		

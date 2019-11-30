@@ -8,7 +8,7 @@ public class GameElements {
 	Image[] imageArray;
 	protected int xCoordinate;
 	
-	boolean isalive;
+	protected boolean isalive;
 	
 
 	

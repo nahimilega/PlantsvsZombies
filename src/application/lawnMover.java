@@ -9,8 +9,8 @@ public class lawnMover extends GameElements{
 	private boolean isactive;
 	
 	public lawnMover() {
-		super(0.22, "/application/lawnMover",2,70,70);
-		stillImage = new Image( "/application/stilllawnMover.png",70, 70, false, false );
+		super(0.22, "/application/resources/lawnMover",2,70,70);
+		stillImage = new Image( "/application/resources/stilllawnMover.png",70, 70, false, false );
 		this.xCoordinate = 250;
 		this.isactive = false;
 	}

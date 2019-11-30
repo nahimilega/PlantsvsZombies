@@ -3,6 +3,9 @@ package application;
 import java.util.ArrayList;
 
 import application.Zombies.Zombie;
+import application.Zombies.normalZombie;
+import application.Zombies.trafficZombie;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -115,10 +118,10 @@ public class Main2 extends Application {
 	
 	public void makeBuyMeny(BorderPane root) {
         
-        Image image1 = new Image("/application/bomb.png",80,90,false,false);
-        Image image2 = new Image("/application/peaShooter.png",80,90,false,false);
-        Image image3 = new Image("/application/sunFlower.png",80,90,false,false);
-        Image image4 = new Image("/application/wallnut.png",80,90,false,false);
+        Image image1 = new Image("/application/resources/bomb.png",80,90,false,false);
+        Image image2 = new Image("/application/resources/peaShooter.png",80,90,false,false);
+        Image image3 = new Image("/application/resources/sunFlower.png",80,90,false,false);
+        Image image4 = new Image("/application/resources/wallnut.png",80,90,false,false);
         
         ImageView imageView1 = new ImageView(image1);
         imageView1.setX(280);
@@ -149,9 +152,6 @@ public class Main2 extends Application {
         	//Cherry bomb is activated
         	allplantOption.add(imageView1);
         }
-
-
-       
         
         // To set the mouse event to plant plant
         
@@ -187,7 +187,7 @@ public class Main2 extends Application {
 	
 	
 	public void allocateZombie() {
-		ArrayList<Zombie> passiveZombies = new ArrayList<Zombie>();
+		
 		
 		/*
 		 * Level 1 10 Normal zombie
@@ -196,11 +196,48 @@ public class Main2 extends Application {
 		 * Level 4 10 Normal 8 Traffic
 		 * Level 5 11 Normal 10 Traffic
 		 */
+		
+		
+		int normalZombie=0;
+		int trafficZombie=0;
 		if( this.level == 1) {
-			
+			normalZombie = 10;
 		}
 		else if( this.level == 2) {
+			normalZombie = 8;
+			trafficZombie = 3;
+		}
+		else if(this.level == 3) {
+			normalZombie = 8;
+			trafficZombie = 5;
+		}
+		else if( this.level == 4) {
+			normalZombie = 10;
+			trafficZombie = 8;
+		}
+		else if( this.level == 5) {
+			normalZombie = 11;
+			trafficZombie = 10;
+		}
+		
+		
+		for (int j = 0; j < 5; j++) {
 			
+			
+		
+			ArrayList<Zombie> passiveZombies = new ArrayList<Zombie>();
+			for (int i = 0; i < normalZombie ; i++) {
+				passiveZombies.add(new normalZombie());
+			}
+		
+			for (int i = 0; i < trafficZombie ; i++) {
+				passiveZombies.add(new trafficZombie());
+			}
+			
+			
+			System.out.println(passiveZombies.size());
+			rows[j].setPassivearray(passiveZombies);
+		
 		}
 		
 	}
@@ -208,13 +245,6 @@ public class Main2 extends Application {
 	@Override
 	public void start(Stage theStage) {
 		try {
-			
-			
-			
-			
-			
-			
-			
 			
 			
 			BorderPane root = new BorderPane();
@@ -244,6 +274,7 @@ public class Main2 extends Application {
 	        rows[3] = new Row(gc, 525, timeStart);
 	        rows[4] = new Row(gc, 661, timeStart);
 	        
+	        allocateZombie();
 	       
 	        // create a button 
 	     

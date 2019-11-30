@@ -1,5 +1,5 @@
 package application.Zombies;
-
+/*
 public class normalZombie extends Zombie {
 
 	public normalZombie(int xCoordinate) {
@@ -14,3 +14,4 @@ public class normalZombie extends Zombie {
 	}
 	
 }
+*/
