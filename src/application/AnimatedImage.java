@@ -1,12 +1,14 @@
 package application;
 
+import java.io.Serializable;
+
 import javafx.scene.image.Image;
 
-class AnimatedImage
-{
+class AnimatedImage implements Serializable{
     // assumes animation loops,
     //  each image displays for equal time
-    public Image[] frames;
+	private static final long serialVersionUID = 45L;
+	transient public Image[] frames;
     public double duration;
     
     public Image getFrame(double time){

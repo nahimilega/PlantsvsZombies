@@ -6,7 +6,7 @@
 <AnchorPane fx:id="mainPane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController2">
    <children>
       <Button fx:id="backtomenuButton" layoutX="261.0" layoutY="396.0" mnemonicParsing="false" onAction="#backtoMainMenu" prefHeight="39.0" prefWidth="79.0" text="Back" />
-      <Button layoutX="77.0" layoutY="93.0" mnemonicParsing="false" text="Saved Game 1" />
+      <Button fx:id="option1" layoutX="77.0" layoutY="93.0" onAction="#option1select" mnemonicParsing="false" text="Saved Game 1" />
       <Button layoutX="77.0" layoutY="136.0" mnemonicParsing="false" text="Saved Game 2" />
       <Button layoutX="77.0" layoutY="175.0" mnemonicParsing="false" text="Saved Game 3" />
    </children>

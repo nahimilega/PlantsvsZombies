@@ -15,6 +15,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+
+
+// Controler for instructions
 public class MyController1 implements Initializable {
 	
 	@FXML

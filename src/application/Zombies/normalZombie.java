@@ -1,6 +1,8 @@
 package application.Zombies;
 
-public class normalZombie extends Zombie {
+import java.io.Serializable;
+
+public class normalZombie extends Zombie implements Serializable{
 
 	public normalZombie() {
 		super(0.25, "/application/resources/zombies/normalzombie/zombieNormal",2,50,80,100);

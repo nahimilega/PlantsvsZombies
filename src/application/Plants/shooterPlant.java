@@ -1,12 +1,14 @@
 package application.Plants;
 
+import java.io.Serializable;
+
 import application.GameElements;
 import application.SpriteManager;
 import javafx.scene.image.Image;
 
 
 
-class shooter extends Plants{
+class shooter extends Plants implements Serializable{
 
 	public shooter(String nameOfImage, int noOfImage, int sizeX , int sizeY) {
 
@@ -17,7 +19,7 @@ class shooter extends Plants{
 	
 }
 
-public class shooterPlant extends shooter{
+public class shooterPlant extends shooter implements Serializable{
 
 
 	public shooterPlant(int xCoordinate) {

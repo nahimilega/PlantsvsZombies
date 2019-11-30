@@ -3,9 +3,11 @@ package application.Zombies;
 import application.GameElements;
 import application.SpriteManager;
 import javafx.scene.image.Image;
+
+import java.io.Serializable;
 import java.util.Random;
 
-public abstract class Zombie extends GameElements {
+public abstract class Zombie extends GameElements implements Serializable{
 	
 	private int timeOut;
 	protected int health;
@@ -31,8 +33,6 @@ public abstract class Zombie extends GameElements {
 			if(ctr%2==0)
 				this.xCoordinate = this.xCoordinate-1; 
 		}
-		
-		
 	}
 
 	public int getTimeOut() {
@@ -45,7 +45,7 @@ public abstract class Zombie extends GameElements {
 	}
 	public void setTimeOut() {
 		Random rand = new Random(); 
-		this.timeOut = rand.nextInt(10000);;
+		this.timeOut = rand.nextInt(10000)+600;
 	}
 	
 	public void reducehealth(int attack) {

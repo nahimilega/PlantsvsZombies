@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 public class lawnMover extends GameElements{
 	
-	Image stillImage;
+	transient Image stillImage;
 	
 	public boolean isactive;
 	
@@ -15,6 +15,15 @@ public class lawnMover extends GameElements{
 		this.isactive = false;
 	}
 
+	
+	@Override
+	public void revive() {
+		// TODO Auto-generated method stub
+		super.revive();
+		stillImage = new Image( "/application/resources/stilllawnMover.png",70, 70, false, false );
+	}
+	
+	
 	@Override
 	public Image getFrame(double time) {
 		if (isactive) {

@@ -1,5 +1,6 @@
 package application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import application.Zombies.Zombie;
@@ -27,11 +28,11 @@ import javafx.scene.text.Font;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 
+import java.io.*; 
 
 
-
-public class Main2 extends Application {
-
+public class Main2 extends Application implements Serializable {
+	private static final long serialVersionUID = 42L;
 	public Row rows[];
 
 	public int sunToken;
@@ -39,14 +40,26 @@ public class Main2 extends Application {
 	int level;
 	int diff = 0;
 
+	public long timeStart;
+	transient Canvas canvas;
+	transient GraphicsContext gc;
+	
 	public Main2(int level) {
 		super();
-		sunToken = 50;
+		sunToken = 500;
 		this.level = level;
 		rows = new Row[5];
+		timeStart = System.currentTimeMillis();
+		canvas = new Canvas( 1400, 800 );
+		gc = canvas.getGraphicsContext2D();
+        rows[0] = new Row(gc, 140, timeStart,this);
+        rows[1] = new Row(gc, 260, timeStart,this);
+        rows[2] = new Row(gc, 400, timeStart,this);
+        rows[3] = new Row(gc, 525, timeStart,this);
+        rows[4] = new Row(gc, 661, timeStart,this);
+        allocateZombie();
 
 	}
-
 
 	public int getRowNo(double yCoordinate) {
 		/*
@@ -213,9 +226,6 @@ public class Main2 extends Application {
 
 		}
 
-        
-        
-
 	}
 
 
@@ -280,7 +290,36 @@ public class Main2 extends Application {
 		}
 
 	}
+	
+	
+	public void doseralise() {
+        try { 
+        	String name = "test";
+  
+            // Saving of object in a file 
+            FileOutputStream file = new FileOutputStream (name); 
+            ObjectOutputStream out = new ObjectOutputStream (file);
+            // Method for serialization of object
+            out.writeObject(this); 
+  
+            out.close(); 
+            file.close();
+            
+            System.out.println("Object has been saved \n");
+            System.out.println("Exiting the game \n");
+  
+        } 
+  
+        catch (IOException ex) {
+        	ex.printStackTrace();
+            System.out.println("IOException is caught"); 
+        } 
+	}
 
+	
+	
+	
+	
 	@Override
 	public void start(Stage theStage) {
 		try {
@@ -288,38 +327,30 @@ public class Main2 extends Application {
 
 			BorderPane root = new BorderPane();
 			root.setId("pane");
-
+			canvas = new Canvas( 1400, 800 );
+			gc = canvas.getGraphicsContext2D();
 
 			Scene scene = new Scene(root,1400, 800);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			theStage.setScene(scene);
 
+	        root.getChildren().add(canvas);
 
-
-
-
-			Canvas canvas = new Canvas( 1400, 800 );
-	        root.getChildren().add( canvas );
-
-	        GraphicsContext gc = canvas.getGraphicsContext2D();
+	        
 
 
 	        Timeline gameLoop = new Timeline();
 	        gameLoop.setCycleCount( Timeline.INDEFINITE );
 
-	        final long timeStart = System.currentTimeMillis();
+	        System.out.println("Time Start");
+	        System.out.println(timeStart);
+	        
 
 
-	        rows[0] = new Row(gc, 140, timeStart,this);
-	        rows[1] = new Row(gc, 260, timeStart,this);
-	        rows[2] = new Row(gc, 400, timeStart,this);
-	        rows[3] = new Row(gc, 525, timeStart,this);
-	        rows[4] = new Row(gc, 661, timeStart,this);
-
-	        allocateZombie();
 	        AnchorPane sunPane = new AnchorPane();
 			for (int i = 0; i < rows.length; i++) {
 				rows[i].setpane(sunPane);
+				rows[i].getGC(gc);
 			}
 
 	        // create a button
@@ -331,10 +362,39 @@ public class Main2 extends Application {
 	        Button button2 = new Button("Save Game");
 	        button2.setTranslateX(1200);
 	        button2.setTranslateY(15);
+	        
+	        
+	        EventHandler<ActionEvent> savegameevent = new EventHandler<ActionEvent>() { 
+	            public void handle(ActionEvent e) 
+	            { 
+	                doseralise();
+	            } 
+	        }; 
+	  
+	        // when button is pressed 
+	        button2.setOnAction(savegameevent); 
+	        
+	        
+	        
+	        
 	        Button button3 = new Button("Exit");
 	        button3.setTranslateX(1300);
 	        button3.setTranslateY(15);
 
+	        
+	        EventHandler<ActionEvent> exitGame = new EventHandler<ActionEvent>() { 
+	            public void handle(ActionEvent e) 
+	            { 
+	                System.exit(0);
+	            } 
+	        };
+	        // when button is pressed 
+	        button3.setOnAction(exitGame); 
+	        
+	        
+	        
+	        
+	        
 
 	        AnchorPane tilepane = new AnchorPane();
 
@@ -375,8 +435,7 @@ public class Main2 extends Application {
 
 	                    double t = (System.currentTimeMillis() - timeStart) / 1000.0;
 
-	                    double x = (t*50)%512;
-	                    double y = 232;
+
 
 	                    // Clear the canvas
 	                    gc.clearRect(0, 0, 1400,800);

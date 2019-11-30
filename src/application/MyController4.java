@@ -2,6 +2,8 @@ package application;
 
 
 import javafx.application.Application;
+
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -18,6 +20,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+
+// Level selection
 public class MyController4 implements Initializable {
 	
 	@FXML
@@ -52,7 +57,8 @@ public class MyController4 implements Initializable {
 		Stage stage = (Stage) level.getScene().getWindow();
 		Main2 s=new Main2(1);
 		s.start(stage);
-		//Application.launch(Main2.class)
+		//this.level2Start(event);
+		
 	}
 	
 	
@@ -60,6 +66,8 @@ public class MyController4 implements Initializable {
 		Stage stage = (Stage) level.getScene().getWindow();
 		Main2 s=new Main2(2);
 		s.start(stage);
+		
+		
 	}
 	
 	public void level3Start(ActionEvent event) throws IOException {

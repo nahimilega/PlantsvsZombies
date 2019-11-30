@@ -1,12 +1,14 @@
 package application;
 
+import java.io.Serializable;
+
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
-public class sun extends GameElements  {
+public class sun extends GameElements implements Serializable  {
 	
-
+	private static final long serialVersionUID = 43L;
 	public sun(int xCoordinate) {
 		super(500, "/application/resources/sun",1,50,50);
 
@@ -22,7 +24,7 @@ public class sun extends GameElements  {
 }
 
 
- class Pea extends GameElements {
+ class Pea extends GameElements implements Serializable {
 	 
 	int attack;
 	public Pea(int xCoordinate ) {

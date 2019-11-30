@@ -1,5 +1,6 @@
 package application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import application.Plants.Plants;
@@ -16,13 +17,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class Row {
+public class Row implements Serializable {
 	public SpriteManager sManager;
 	private ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
-
 	private ArrayList<Zombie> passiveZombies = new ArrayList<Zombie>();
-
-	private ArrayList<Plants> plantList = new ArrayList<Plants>();
+	private ArrayList<Plants> plantList;
 	private ArrayList<Pea> peaList = new ArrayList<Pea>();
 
 	private Main2 main;
@@ -30,7 +29,7 @@ public class Row {
 	
 	public ArrayList<sun> sunList = new ArrayList<sun>();
 	private lawnMover mover;
-	AnchorPane sunPane;
+	transient AnchorPane sunPane;
 
 	final int rowY;
 	long timeStart;
@@ -40,20 +39,9 @@ public class Row {
 
 		this.rowY = rowY;
 		ctr = 0;
-		
+		plantList = new ArrayList<Plants>();
 		this.main = main;
-		/*
-		Plants s = new shooterPlant(340);
-		Plants wall = new wallnut(500);
 
-		sun sun =new sun(798);
-		sunList.add(sun);
-
-		Plants sunf = new sunFlower(800);
-		plantList.add(wall);
-		plantList.add(sunf);
-		plantList.add(s);
-		*/
 		mover = new lawnMover();
 
 
@@ -61,6 +49,19 @@ public class Row {
 
 	}
 
+	
+	
+	
+	public void getGC(GraphicsContext gc) {
+		sManager.getGC(gc);
+		for (Zombie pea : passiveZombies) {
+			pea.revive();
+		}
+	}
+	
+	
+	
+	
 
 	public void setpane(AnchorPane sunPane) {
 		this.sunPane  = sunPane;
@@ -271,7 +272,8 @@ public class Row {
 
 		addZombie();
 
-
+		//System.out.println(plantList.size());
+		//System.out.println(peaList.size());
 		detectpeacollision();
 
 		detectplantzombiecollision();

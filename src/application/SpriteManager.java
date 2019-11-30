@@ -1,5 +1,6 @@
 package application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import application.Plants.Plants;
@@ -11,7 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 
-public class SpriteManager {
+public class SpriteManager implements Serializable {
 	
 	
 	public ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
@@ -23,7 +24,7 @@ public class SpriteManager {
 	final int rowY;
 	final long timeStart;
 	
-	public GraphicsContext gc;
+	transient public GraphicsContext gc;
 	
 		
 	public SpriteManager(GraphicsContext gc, ArrayList<Zombie> zombieList, ArrayList<Plants> plantList, ArrayList<Pea> peaList, ArrayList<sun> sunList, lawnMover mover,int rowY , long timeStart ) {
@@ -40,6 +41,26 @@ public class SpriteManager {
 	
 	
 
+	public void getGC(GraphicsContext gc) {
+		this.gc = gc;
+		// to revive all the images after the deserialize
+		for (Pea pea : peaList) {
+			pea.revive();
+		}
+		for (sun pea : sunList) {
+			pea.revive();
+		}
+		for (Plants pea : plantList) {
+			pea.revive();
+		}
+		for (Zombie pea : zombieList) {
+			pea.revive();
+		}
+		mover.revive();
+		
+		
+		
+	}
 	
 	
 	
