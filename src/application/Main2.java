@@ -1,6 +1,5 @@
 package application;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import application.Zombies.Zombie;
@@ -12,6 +11,8 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Scene;
@@ -19,7 +20,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -40,7 +40,7 @@ public class Main2 extends Application implements Serializable {
 	public int ctr = 0;
 	int level;
 	int diff = 0;
-
+	int something =0;
 	public long timeStart;
 	transient Canvas canvas;
 	transient GraphicsContext gc;
@@ -50,7 +50,7 @@ public class Main2 extends Application implements Serializable {
 	public Main2(int level, String name) {
 		super();
 		timeShow = 180;
-		sunToken = 500;
+		sunToken = 100;
 		this.level = level;
 		rows = new Row[5];
 		timeStart = System.currentTimeMillis();
@@ -255,7 +255,7 @@ public class Main2 extends Application implements Serializable {
 		int normalZombie=0;
 		int trafficZombie=0;
 		if( this.level == 1) {
-			normalZombie = 10;
+			normalZombie = 8;
 		}
 		else if( this.level == 2) {
 			normalZombie = 8;
@@ -326,7 +326,7 @@ public class Main2 extends Application implements Serializable {
 	
 	
 	@Override
-	public void start(Stage theStage) throws LevelClearException {
+	public void start(Stage theStage)  {
 		try {
 
 
@@ -396,11 +396,6 @@ public class Main2 extends Application implements Serializable {
 	        // when button is pressed 
 	        button3.setOnAction(exitGame); 
 	        
-	        
-	        
-	        
-	        
-
 	        AnchorPane tilepane = new AnchorPane();
 
 
@@ -459,6 +454,55 @@ public class Main2 extends Application implements Serializable {
 	                    	timeShow--;
 	                    }
 	                    
+	                    if(timeShow<=0) {
+	             		   
+	                    	
+	                    	if(level == 5) {
+	                    		something++;
+	                    		
+		                    		
+		                    		Image img = new Image( "/application/resources/win-screen.png",1400, 900, false, false );
+
+		                            ImageView imageView1 = new ImageView(img);
+		                            
+		                            root.getChildren().clear();
+		                            root.getChildren().add(imageView1);
+		                            if(something==2) {
+		                            	gameLoop.stop();
+		                            try {
+		                                Thread.sleep(2000);
+		                            } catch (InterruptedException e) {
+		                                e.printStackTrace();
+		                            }
+	       
+		                            System.exit(0);
+	                    		}
+
+	                    	}
+	                    		
+	                    	else {
+	                    		something++;
+	                    		Image img = new Image( "/application/resources/levelUp.jpg",1400, 800, false, false );
+
+	                            ImageView imageView1 = new ImageView(img);
+	                            
+	                            root.getChildren().clear();
+	                            root.getChildren().add(imageView1);
+	                            if(something==2) {
+	                            	gameLoop.stop();
+	                            try {
+	                                Thread.sleep(2000);
+	                            } catch (InterruptedException e) {
+	                                e.printStackTrace();
+	                            }
+		                    		
+		                    		Main2 s=new Main2(++level,name);
+		                    		s.start(theStage);
+	                            }
+
+	                    	}
+
+	                    }
 	                    
 
 	                    gc.setStroke(Color.BLACK);

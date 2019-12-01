@@ -92,7 +92,7 @@ public class MyController2 implements Initializable {
             in.close(); 
             try {
 				s.start(stage);
-			} catch (LevelClearException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

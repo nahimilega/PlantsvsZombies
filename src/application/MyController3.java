@@ -57,18 +57,14 @@ public class MyController3 implements Initializable {
 		int level = 1;
 		
 		
-
-			
-		
 		try {
 			Main2 s=new Main2(level,name);
 			s.start(stage);
-			//Thread.sleep(Long.MAX_VALUE);
-		} catch (LevelClearException e) {
-			// TODO Auto-generated catch block
+			
+		} catch (Exception e) {
+			
 			level++;
 		}
-		
 		
 		
 		
