@@ -293,9 +293,7 @@ public class Row implements Serializable {
 		    	 if(currplant.getClass().equals(sunflower.getClass())) {
 		    		 this.addSun(currplant.getx()+10);
 		    	 }
-
 		    }
-
 		}
 
 		sManager.update();

@@ -7,7 +7,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
- 
+import java.util.logging.Level;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,8 +54,23 @@ public class MyController3 implements Initializable {
 		String name = nameText.getText();
 		   
 		Stage stage = (Stage) start.getScene().getWindow();
-		Main2 s=new Main2(1,name);
-		s.start(stage);
+		int level = 1;
+		
+		
+
+			
+		
+		try {
+			Main2 s=new Main2(level,name);
+			s.start(stage);
+			//Thread.sleep(Long.MAX_VALUE);
+		} catch (LevelClearException e) {
+			// TODO Auto-generated catch block
+			level++;
+		}
+		
+		
+		
 		
 	}
 	

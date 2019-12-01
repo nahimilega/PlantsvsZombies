@@ -41,3 +41,11 @@ public class sun extends GameElements implements Serializable  {
 	}
 
 }
+ 
+ 
+ 
+ class LevelClearException extends Exception {
+		public LevelClearException() {
+			super();
+		}
+	}

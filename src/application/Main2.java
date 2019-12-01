@@ -36,7 +36,8 @@ public class Main2 extends Application implements Serializable {
 	public Row rows[];
 
 	public int sunToken;
-
+	public int timeShow;
+	public int ctr = 0;
 	int level;
 	int diff = 0;
 
@@ -48,6 +49,7 @@ public class Main2 extends Application implements Serializable {
 	
 	public Main2(int level, String name) {
 		super();
+		timeShow = 180;
 		sunToken = 500;
 		this.level = level;
 		rows = new Row[5];
@@ -324,7 +326,7 @@ public class Main2 extends Application implements Serializable {
 	
 	
 	@Override
-	public void start(Stage theStage) {
+	public void start(Stage theStage) throws LevelClearException {
 		try {
 
 
@@ -425,9 +427,9 @@ public class Main2 extends Application implements Serializable {
 
 	     // Buy menu ends here
 
+	        timeStart = System.currentTimeMillis();
 
-
-
+	        
 	        KeyFrame kf = new KeyFrame(
 	            Duration.seconds(0.017),                // 60 FPS
 	            new EventHandler<ActionEvent>()
@@ -435,7 +437,7 @@ public class Main2 extends Application implements Serializable {
 
 					public void handle(ActionEvent ae)
 	                {
-
+						
 	                    double t = (System.currentTimeMillis() - timeStart) / 1000.0;
 
 
@@ -452,9 +454,15 @@ public class Main2 extends Application implements Serializable {
 	                    double time = 180 - t;
 	                    gc.setFont(new Font("Arial", 30));
 
+	                    ctr++;
+	                    if(ctr%58==0) {
+	                    	timeShow--;
+	                    }
+	                    
+	                    
 
 	                    gc.setStroke(Color.BLACK);
-	                    gc.strokeText("Time left: "+Integer.toString((int) time), 900, 30);
+	                    gc.strokeText("Time left: "+Integer.toString((int) timeShow), 900, 30);
 	                    label.setText(Integer.toString(sunToken));
 	                    /*
 	                    gc.drawImage( earth, x, y );

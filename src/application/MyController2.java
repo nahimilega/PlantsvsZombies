@@ -90,7 +90,12 @@ public class MyController2 implements Initializable {
             s = (Main2)in.readObject(); 
             file.close(); 
             in.close(); 
-            s.start(stage);
+            try {
+				s.start(stage);
+			} catch (LevelClearException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
   
         } 
           
