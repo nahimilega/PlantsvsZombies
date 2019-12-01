@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 
 public class GameElements implements Serializable{
 	private static final long serialVersionUID = 44L;
-	AnimatedImage image;
+	protected AnimatedImage image;
 	transient Image[] imageArray;
 	protected int xCoordinate;
 	

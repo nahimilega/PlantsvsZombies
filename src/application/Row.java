@@ -154,7 +154,7 @@ public class Row implements Serializable {
 				 * PLS CHANGE ME I AM CHERRY BOMB
 				 * TODO: HAHAHAHAHH
 				 */
-				newPlants = new sunFlower((int)Math.round(xCoordiante));
+				newPlants = new cherryBomb((int)Math.round(xCoordiante));
 
 			}
 			//Plants

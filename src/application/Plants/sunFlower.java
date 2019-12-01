@@ -7,9 +7,6 @@ import application.SpriteManager;
 import javafx.scene.image.Image;
 
 
-
-
-
 public class sunFlower extends Plants implements Serializable{
 	private static final long serialVersionUID = 40L;
 	public sunFlower(int xCoordinate) {

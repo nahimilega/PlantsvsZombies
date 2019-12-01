@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 
 
@@ -32,6 +33,8 @@ public class MyController3 implements Initializable {
 	@FXML
 	   private Button startButton;
 	
+	@FXML
+	private TextField nameText;
 	
 	
 	@Override
@@ -46,8 +49,13 @@ public class MyController3 implements Initializable {
 		   start.getChildren().setAll(pane);
 	}
 	public void startGame(ActionEvent event) throws IOException {
-		   AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/LevelOption.fxml"));
-		   start.getChildren().setAll(pane);
+			
+		String name = nameText.getText();
+		   
+		Stage stage = (Stage) start.getScene().getWindow();
+		Main2 s=new Main2(1,name);
+		s.start(stage);
+		
 	}
 	
 	

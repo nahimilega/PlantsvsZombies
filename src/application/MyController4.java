@@ -35,6 +35,8 @@ public class MyController4 implements Initializable {
 	@FXML
 	   private Button startButton;
 	
+	
+
 	Stage stage;
 	
 	
@@ -57,10 +59,8 @@ public class MyController4 implements Initializable {
 		Stage stage = (Stage) level.getScene().getWindow();
 		Main2 s=new Main2(1);
 		s.start(stage);
-		//this.level2Start(event);
-		
+		//this.level2Start(event);	
 	}
-	
 	
 	public void level2Start(ActionEvent event) throws IOException {
 		Stage stage = (Stage) level.getScene().getWindow();

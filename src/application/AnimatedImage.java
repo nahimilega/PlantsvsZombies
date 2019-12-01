@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javafx.scene.image.Image;
 
-class AnimatedImage implements Serializable{
+public class AnimatedImage implements Serializable{
     // assumes animation loops,
     //  each image displays for equal time
 	private static final long serialVersionUID = 45L;

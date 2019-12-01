@@ -43,14 +43,17 @@ public class Main2 extends Application implements Serializable {
 	public long timeStart;
 	transient Canvas canvas;
 	transient GraphicsContext gc;
+	String name;
 	
-	public Main2(int level) {
+	
+	public Main2(int level, String name) {
 		super();
 		sunToken = 500;
 		this.level = level;
 		rows = new Row[5];
 		timeStart = System.currentTimeMillis();
 		canvas = new Canvas( 1400, 800 );
+		this.name = name;
 		gc = canvas.getGraphicsContext2D();
         rows[0] = new Row(gc, 140, timeStart,this);
         rows[1] = new Row(gc, 260, timeStart,this);
@@ -294,7 +297,7 @@ public class Main2 extends Application implements Serializable {
 	
 	public void doseralise() {
         try { 
-        	String name = "test";
+        	String name = "SavedGames/"+this.name + " Backyard";
   
             // Saving of object in a file 
             FileOutputStream file = new FileOutputStream (name); 

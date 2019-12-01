@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import application.Plants.Plants;
+import application.Plants.cherryBomb;
 import application.Zombies.Zombie;
+import application.Zombies.trafficZombie;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
@@ -20,7 +22,7 @@ public class SpriteManager implements Serializable {
 	public ArrayList<Pea> peaList = new ArrayList<Pea>();
 	public ArrayList<sun> sunList = new ArrayList<sun>();
 	private lawnMover mover;
-	
+	Plants chb = new cherryBomb(200);
 	final int rowY;
 	final long timeStart;
 	
@@ -91,11 +93,30 @@ public class SpriteManager implements Serializable {
 		}
 	}
 	
+	
+	public void foundBombexplode(int xCoordinate){
+		int lowRange = xCoordinate - 200;
+		int high = xCoordinate + 300;
+		for (Zombie z : zombieList) {
+			if(z.xCoordinate>lowRange && z.xCoordinate<high) {
+				z.hitbymover();
+			}
+			
+		}
+	}
+	
+	
 	public void removedeadplant() {
 		ArrayList<Plants> removeindex = new ArrayList<Plants>();
+		//
 		for (int i = 0; i < plantList.size(); i++) {
 			if(plantList.get(i).isalive == false ) {
 				removeindex.add(plantList.get(i));
+				
+				if(plantList.get(i).getClass().equals(chb.getClass())) {
+					foundBombexplode(plantList.get(i).xCoordinate);
+				}
+				
 			}
 		}
 		for (int i = 0; i < removeindex.size(); i++) {
