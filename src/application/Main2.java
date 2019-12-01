@@ -21,6 +21,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -380,8 +381,10 @@ public class Main2 extends Application implements Serializable {
 	        button2.setOnAction(savegameevent); 
 	        
 	        
+	        TextField b = new TextField();
 	        
-	        
+	        b.setTranslateX(1350);
+	        b.setTranslateY(15);
 	        Button button3 = new Button("Exit");
 	        button3.setTranslateX(1300);
 	        button3.setTranslateY(15);
@@ -390,7 +393,17 @@ public class Main2 extends Application implements Serializable {
 	        EventHandler<ActionEvent> exitGame = new EventHandler<ActionEvent>() { 
 	            public void handle(ActionEvent e) 
 	            { 
-	                System.exit(0);
+	            	String string =b.getText();
+	            	if(string.equals("TIMEMACHINE")) {
+	            		timeShow = 3;
+	            	}
+	            	else if(string.equals("IAMRICH")) {
+	            		sunToken = 900;
+	            	}
+	            	else {
+	            		System.exit(0);
+					}
+	                
 	            } 
 	        };
 	        // when button is pressed 
@@ -398,7 +411,7 @@ public class Main2 extends Application implements Serializable {
 	        
 	        AnchorPane tilepane = new AnchorPane();
 
-
+	        tilepane.getChildren().add(b);
 	        tilepane.getChildren().add(button3);
 	        tilepane.getChildren().add(button2);
 
