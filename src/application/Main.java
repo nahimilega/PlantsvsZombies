@@ -8,19 +8,15 @@ import javafx.stage.Stage;
  
 public class Main extends Application {
     
-  //hello
+
     @Override
     public void start(Stage primaryStage) {
         try {
-            // Read file fxml and draw interface.
+         
             
         	FXMLLoader fx = new FXMLLoader(getClass().getResource("/application/MyScene.fxml"));
         	Parent root = (Parent) fx.load();
-        	
-
-            //((MyController4) fx.getController()).setStage(primaryStage);
-            primaryStage.setTitle("My Application");
-            //primaryStage.setScene(new Scene(root2));
+            primaryStage.setTitle("Plant vs Zombies - By Aanchal and Archit");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
          
