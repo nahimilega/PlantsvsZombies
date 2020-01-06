@@ -1,15 +1,15 @@
 # Plants vs Zombies
-##Plants vs Zombies
+## Plants vs Zombies
 
 
-CSE201: Advanced Programming Final Project
+CSE201: Advanced Programming Final Project </br>
 Re-implemented the strategy video game, Plants vs. Zombies.
 
-##Features
+## Features
 
 
 
-##Screenshots
-[Test Image 2](screenshots/lwn.png)
+## Screenshots
+(screenshots/lwn.png)
 
 How to run
